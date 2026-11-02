@@ -1,0 +1,26 @@
+{
+  "sources": [
+    {
+      "sha256": "291be3f2516a30019ae5a389c4ac68c6ad86759994f311ddb6fb4048f055a60a",
+      "source": "skills/pixel-sprite-multiview/assets/realtime.js"
+    },
+    {
+      "sha256": "5bf7e80eb4d31273dada38544b75cdee2c3667dc98a2c8565c509ef492ef1256",
+      "source": "skills/colorfigures/SKILL.md"
+    },
+    {
+      "sha256": "8edb21c0f74ae27cee0649c8acff4c13e2923bfcace663497279d747990de8a4",
+      "source": "workspace/sites/pixel-multiview/dist/index.html"
+    }
+  ],
+  "reuse": "Geometry-first workflow adapted from colorfigures; generic GPU sampler and contact-ownership shader from pixel-sprite-multiview; camera-normal selective ink generalized from the shipped pixel demo. No chair role, fixed floor footprint or angle-specific paint rules copied.",
+  "runtimeChanges": [
+    "parameterized ink/deep ink/luminance threshold",
+    "shared camera zoom and provenance",
+    "warm preview UI",
+    "removed caster-only diagnostic",
+    "one-pixel exterior-only silhouette dilation; front-owner contact stroke on rear surface with thin-part protection",
+    "geometry-derived vertical ground projection, shared high-resolution mask with translucent raw/pixel/export composition",
+    "Colorfigures-inspired warm paper shell, capsule controls and circular swatches; coordinated live material/palette/ink finish presets"
+  ]
+}
