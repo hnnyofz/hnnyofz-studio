@@ -1,0 +1,4 @@
+interface:
+  display_name: "Q 版建模与像素预览"
+  short_description: "Create chibi 3D props with synced model and pixel views"
+  default_prompt: "Use $chibi-pixel-studio to build a rounded chibi prop with synchronized 3D and pixel shader previews."
