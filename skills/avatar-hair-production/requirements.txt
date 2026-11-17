@@ -1,0 +1,5 @@
+# Host tools. Blender provides bpy, bmesh, mathutils and its own NumPy.
+Pillow>=10,<14
+playwright>=1.50,<2
+# Optional for --generate only; --inspect uses the Python standard library.
+gradio_client>=1.3

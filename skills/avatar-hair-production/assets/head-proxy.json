@@ -1,0 +1,63 @@
+{
+  "size": 64,
+  "rotationSign": -1,
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "movingRoot": "ROTATING",
+  "fixedRoots": [],
+  "palette": [
+    "#d28d7b",
+    "#c98d76",
+    "#dda18a",
+    "#eeb59c",
+    "#f4c2aa",
+    "#fad1ba",
+    "#050403"
+  ],
+  "outline": "#050403",
+  "cameras": [
+    "正面 · 0°",
+    "Camera30",
+    "Camera45",
+    "Camera60",
+    "Camera90"
+  ],
+  "orbit": {
+    "targetZ": 26,
+    "distance": 120,
+    "near": 90,
+    "far": 150,
+    "scale": 64
+  },
+  "parts": {
+    "head": [
+      "Ear inset.L",
+      "Ear inset.R",
+      "Ear.L",
+      "Ear.R",
+      "Head · soft oval",
+      "Eye.L",
+      "Eye.R",
+      "Mouth"
+    ],
+    "hair_front": [],
+    "hair_back": []
+  },
+  "name": "Neutral Avatar head reference",
+  "model": "model/avatar.blend",
+  "references": [],
+  "hairPartNames": [
+    "hair_front",
+    "hair_back"
+  ],
+  "frontHairPartNames": [
+    "hair_front"
+  ],
+  "backHairPartNames": [
+    "hair_back"
+  ],
+  "hairLighting": "fixed-normal"
+}

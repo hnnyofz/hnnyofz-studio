@@ -1,0 +1,18 @@
+{
+  "description": "Portable Avatar hair pipeline, adapted from the FFA production workflow and the pixel-sprite-multiview renderer. No historical task checkout is needed.",
+  "rendererOrigin": {
+    "name": "pixel-sprite-multiview + FFA head/section adapters",
+    "relatedStudioRepository": "https://github.com/hnnyofz/hnnyofz-studio",
+    "notice": "THIRD_PARTY_NOTICES.md"
+  },
+  "profile": "FFA legacy 64px head/hair, 63+63+5+5, gray-head icon row4 col6",
+  "asOf": "2026-11-17",
+  "bundledRendererFiles": {
+    "assets/renderer/assets/realtime.html": "5769763a8ae704b4e8a4fe9d57ff6426cd6219d6420c78ee4fbe6cb16820cdae",
+    "assets/renderer/assets/realtime.js": "8937053538e09864ff5bef7af14167baaee69d83b156aef06f352b2bb29468da",
+    "assets/renderer/scripts/build_head_viewers.py": "a0db7e15233db4053b07b1570ba39b4017bc69c72a54af349f75f4d68997dfc7",
+    "assets/renderer/scripts/build_section_viewers.py": "8d4de91c04f83100b94e9e24ec668041a6d203e18b2e458bd9afacab8dad3dda",
+    "assets/renderer/scripts/realtime.py": "978ab09b769f70b484cc0ea0f6fb056da065c7b936f87a022839cc0eaf9e4d01",
+    "assets/renderer/scripts/realtime_export.py": "3849dbdbb9f7545c711ff1989f604016f74e7bcb1def7e3920549da52dcb9274"
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="__BASE__"><title>发型预览</title><style>
+*{box-sizing:border-box}body{margin:0;background:#202433;color:#edf1f6;font:15px/1.5 system-ui,sans-serif}
+header{padding:20px;position:sticky;top:0;background:#202433f5;z-index:1}h1{font-size:24px;margin:0 0 8px}p{margin:6px 0;color:#bbc6d9}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}button{font:inherit;background:#36425a;color:inherit;border:1px solid #73829c;border-radius:5px;padding:7px 12px;cursor:pointer}
+button:focus-visible{outline:3px solid #b4d6ff}button[aria-pressed=true]{background:#315f8b}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding:0 20px 24px}
+article{border:1px solid #526079;border-radius:8px;background:#292f41;overflow:hidden}canvas{width:100%;height:230px;display:block;image-rendering:pixelated}.caption{padding:12px}h2{font-size:17px;margin:0}.pose{font:12px/1.6 monospace;color:#bbc6d9}.error{color:#ffbaaa}a{color:#b4d6ff}
+</style></head><body><header><h1>发型预览</h1><p>使用当前 Demo 的 Avatar、CanvasBackend 与实际头脸资产。摄像头关闭，所有姿态手动控制。</p>
+<div class="controls"><button data-yaw="-28" data-pitch="0">左转</button><button data-yaw="0" data-pitch="0">正视</button><button data-yaw="28" data-pitch="0">右转</button><button data-yaw="0" data-pitch="-22">抬头</button><button data-yaw="0" data-pitch="22">低头</button><button data-yaw="28" data-pitch="-22">右上 · 第 1 行第 9 列</button></div>
+<div class="controls"><button id="front">正面</button><button id="back">背面</button><button id="speak" aria-pressed="false">说话开关</button><button id="step">说话下一帧</button><button id="flip" aria-pressed="false">水平翻转</button></div><output id="status">正在加载…</output></header><main id="gallery"></main>
+<script type="module">
+import { Avatar, CanvasBackend, getCenteredAvatarPosition } from './index.ts';
+import { createDefaultSelection, loadAvatarCatalogs, loadDemoAssets } from './demo/demoAssets.ts';
+const entries=__ENTRIES__, avatars=[]; let yaw=0,pitch=0,speaking=false,back=false,flip=false;
+const status=document.querySelector('#status');
+function render(){for(const {avatar,label} of avatars){avatar.update(0);const p=avatar.getState().render.currentHeadFrame;label.textContent=p?`${p.face} · ${p.mode} · 行 ${p.row+1} 列 ${p.col+1} (0基 ${p.row},${p.col})`:'等待姿态';}}
+function applyLook(){for(const {avatar} of avatars){avatar.lookAt({yaw,pitch,roll:0});for(let i=0;i<20;i++)avatar.update(1);}render();}
+for(const button of document.querySelectorAll('[data-yaw]'))button.onclick=()=>{yaw=Number(button.dataset.yaw);pitch=Number(button.dataset.pitch);applyLook();};
+for(const mode of ['front','back'])document.querySelector('#'+mode).onclick=()=>{back=mode==='back';for(const {avatar} of avatars)avatar.setState({action:back?'sitBack':'idle'});applyLook();};
+document.querySelector('#speak').onclick=()=>{speaking=!speaking;document.querySelector('#speak').setAttribute('aria-pressed',String(speaking));for(const {avatar} of avatars)avatar.speak(speaking);render();};
+document.querySelector('#step').onclick=()=>{speaking=true;document.querySelector('#speak').setAttribute('aria-pressed','true');for(const {avatar} of avatars){avatar.speak(true);avatar.update(avatar.config.speakSpeed+1);}render();};
+document.querySelector('#flip').onclick=()=>{flip=!flip;document.querySelector('#flip').setAttribute('aria-pressed',String(flip));for(const {avatar} of avatars)avatar.setState({flip});render();};
+function resize(){for(const {avatar,canvas} of avatars)avatar.setPosition(getCenteredAvatarPosition(avatar.config,{width:canvas.clientWidth,height:canvas.clientHeight},138));render();}
+window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>avatars.forEach(({avatar})=>avatar.destroy()));
+async function main(){try{const catalogs=await loadAvatarCatalogs(),base=createDefaultSelection(catalogs);
+for(const entry of entries){const article=document.createElement('article'),canvas=document.createElement('canvas'),caption=document.createElement('div'),heading=document.createElement('h2'),label=document.createElement('p'),link=document.createElement('a');caption.className='caption';label.className='pose';heading.textContent=entry.name;canvas.setAttribute('aria-label',entry.name+'发型预览');link.href='./?hair='+encodeURIComponent(entry.id);link.textContent='在 Demo 中查看';caption.append(heading,label,link);article.append(canvas,caption);document.querySelector('#gallery').append(article);
+try{if(!catalogs.hair.variants.some(v=>v.id===entry.id))throw new Error('尚未安装 '+entry.id);const assets=await loadDemoAssets({...base,hair:entry.id});const avatar=new Avatar({assets,height:138,showSpeakParticles:false,showRunParticles:false},new CanvasBackend(canvas,{clear:'#292f41',dpr:1}));await avatar.ready;avatar.setState({action:back?'sitBack':'idle',flip,blinking:false});avatar.speak(speaking);avatars.push({avatar,canvas,label});}catch(error){label.className='error';label.textContent=String(error);}}
+resize();applyLook();status.textContent=`${avatars.length} / ${entries.length} 款已加载`;}catch(error){status.textContent=String(error);}}
+void main();
+</script></body></html>

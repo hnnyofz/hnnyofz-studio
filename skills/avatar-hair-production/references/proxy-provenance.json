@@ -1,0 +1,22 @@
+{
+  "source": "FFA approved neutral head/ear/eye/mouth reference; hair meshes, user refs and unused images removed",
+  "sourceBlendSHA256": "2b1dde5d0921cfceedc25b2b194efe5e54aaee5e877a761a3a3363f720553c48",
+  "proxySHA256": "28b270c7442db7f8335a8174071b30e308813d9394861225eb0c64b78fce53ad",
+  "objects": [
+    "Camera30",
+    "Camera45",
+    "Camera60",
+    "Camera90",
+    "Ear inset.L",
+    "Ear inset.R",
+    "Ear.L",
+    "Ear.R",
+    "Eye.L",
+    "Eye.R",
+    "Head · soft oval",
+    "Mouth",
+    "ROTATING",
+    "正面 · 0°"
+  ],
+  "coordinateSystem": "Z up, front -Y, head top approximately Z36, target Z26"
+}
