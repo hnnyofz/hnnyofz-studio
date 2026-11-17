@@ -1,0 +1,4 @@
+interface:
+  display_name: "Avatar 发型生产"
+  short_description: "从三视图与免费模型到 Blender、像素图集及 Avatar Demo 的完整生产流程"
+  default_prompt: "使用 $avatar-hair-production，把这些发型参考制作成可在 Avatar Demo 换装和说话的像素发型资产。"
