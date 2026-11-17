@@ -1,0 +1,15 @@
+{
+  "id": "hair_055",
+  "kind": "choppy-fringe",
+  "name": "墨黑碎齐刘海",
+  "scope": "single hairstyle; example ID is not reserved",
+  "silhouette": "紧凑圆头，碎齐刘海，侧发贴太阳穴，后颈短收",
+  "parting": "接近中分的自然碎层，不做明显秃缝",
+  "crown": "以批准的同款小人头为基准，顶高适中",
+  "temples": "两侧连续贴头，上抬转头时不露出竖条裸头皮，保留耳垂与面颊线",
+  "back": "短收但有体积，保留高光、中间色与暗部层次",
+  "palette": ["#101622", "#243147", "#3d506a", "#6b839c"],
+  "accessories": [],
+  "views": ["front", "right", "back"],
+  "acceptance": {"natural_eye_overlap_allowed": true, "keep_whole_hair_position_consistent_in_speech": true}
+}
